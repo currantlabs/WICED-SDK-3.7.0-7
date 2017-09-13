@@ -10,6 +10,7 @@
 
 NAME := App_Uart_Test
 
-$(NAME)_SOURCES := uart.c
+$(NAME)_SOURCES := stringer.c
 
 GLOBAL_DEFINES := WICED_DISABLE_STDIO
+

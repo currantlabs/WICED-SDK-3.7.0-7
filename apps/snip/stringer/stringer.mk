@@ -8,9 +8,11 @@
 # written permission of Broadcom Corporation.
 #
 
+include ../console/stringer_pal.mk
+
 NAME := App_Uart_Test
 
-$(NAME)_SOURCES := stringer.c
+$(NAME)_SOURCES := $(STRINGER_SOURCES)
 
 GLOBAL_DEFINES := WICED_DISABLE_STDIO
 

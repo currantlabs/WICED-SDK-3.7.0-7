@@ -10,7 +10,7 @@
 
 include ../console/stringer_pal.mk
 
-NAME := App_Uart_Test
+NAME := App_Stringer
 
 $(NAME)_SOURCES := $(STRINGER_SOURCES)
 

@@ -1,0 +1,2 @@
+WICED Version: 3.7.0-7
+206a273673ec49e54899d3b53aeeedbc95252515

@@ -79,8 +79,6 @@ typedef struct
  *               Static Function Declarations
  ******************************************************/
 
-static void application_thread_main( void *arg );
-
 /******************************************************
  *               Variable Definitions
  ******************************************************/
@@ -89,10 +87,6 @@ extern const uint32_t ms_to_tick_ratio;
 wiced_worker_thread_t wiced_hardware_io_worker_thread;
 wiced_worker_thread_t wiced_networking_worker_thread;
 
-static TaskHandle_t  app_thread_handle;
-#ifndef WICED_DISABLE_WATCHDOG
-static TaskHandle_t  system_monitor_thread_handle;
-#endif /* WICED_DISABLE_WATCHDOG */
 static wiced_time_t wiced_time_offset = 0;
 
 /******************************************************
@@ -105,6 +99,14 @@ static wiced_time_t wiced_time_offset = 0;
  *
  */
 #ifndef ALTERNATE_MAIN
+
+static void application_thread_main( void *arg );
+static TaskHandle_t  app_thread_handle;
+
+#ifndef WICED_DISABLE_WATCHDOG
+static TaskHandle_t  system_monitor_thread_handle;
+#endif /* WICED_DISABLE_WATCHDOG */
+
 int main( void )
 {
 
@@ -130,7 +132,6 @@ int main( void )
     /* Should never get here, unless there is an error in vTaskStartScheduler */
     return 0;
 }
-#endif /* ifndef ALTERNATE_MAIN */
 
 static void application_thread_main( void *arg )
 {
@@ -140,6 +141,7 @@ static void application_thread_main( void *arg )
     malloc_leak_check(NULL, LEAK_CHECK_THREAD);
     vTaskDelete( NULL );
 }
+#endif /* ifndef ALTERNATE_MAIN */
 
 
 wiced_result_t wiced_rtos_create_thread( wiced_thread_t* thread, uint8_t priority, const char* name, wiced_thread_function_t function, uint32_t stack_size, void* arg )
